@@ -1,0 +1,920 @@
+# Premium Cloud Kitchen Website - Professional AI IDE Prompt
+
+## Project Brief
+Develop a sophisticated, restaurant-grade website for Tushar's cloud kitchen in Delhi. This is a **professional food outlet website** first, with strategic integration of his YouTube credibility. The site must compete with premium food delivery platforms while showcasing authentic culinary expertise through his documented journey.
+
+---
+
+## Design Philosophy: Premium Restaurant Digital Experience
+
+### Visual Language
+- **Aesthetic**: Michelin-guide level sophistication, not casual or playful
+- **Mood**: Elegant, appetizing, trustworthy, premium yet accessible
+- **References**: Think Zomato Pro, Swiggy Gourmet, high-end restaurant websites
+- **3D Integration**: Subtle, purposeful, enhances food presentation (NOT gimmicky or game-like)
+- **Photography Style**: Professional food photography - shallow depth, warm lighting, editorial quality
+
+### Color Psychology for Food
+```
+Primary Palette:
+- Deep Burgundy (#7D1935) - Rich, appetite-stimulating
+- Charcoal (#1A1A1A) - Sophistication, premium feel
+- Cream (#FFF8E7) - Clean, fresh, appetizing backdrop
+- Terracotta (#CC5500) - Warm, authentic, spice-inspired
+
+Accent Colors:
+- Gold (#D4AF37) - Premium highlights, special items
+- Fresh Green (#2D5016) - Herbs, freshness, health
+- Tomato Red (#C1121C) - Energy, appetite appeal
+
+Typography:
+- Headlines: Cormorant Garamond / Playfair Display (elegant serif)
+- Subheadings: Montserrat SemiBold (modern, clean)
+- Body: Source Sans Pro / Inter (readable, professional)
+- Prices: Roboto Mono (clear, modern)
+```
+
+---
+
+## Website Architecture & Sections
+
+### 1. HERO SECTION - "First Impression"
+**Objective**: Immediate appetite appeal + professional credibility
+
+```html
+Layout Specifications:
+- Full viewport height (100vh)
+- Cinematic quality hero image/video background
+- Subtle 3D element: Single hero dish rotating slowly in foreground
+- Center-aligned content with hierarchy
+```
+
+**Content Elements**:
+- Logo/Brand name (top-left, refined typography)
+- Navigation: Transparent glass-morphism navbar
+  - Menu | Combos | Specials | Our Story | Order Now
+- Hero Headline: "[Brand Name] - Authentic Flavors, Delhi"
+- Subheadline: "Chef-Tested Recipes from a YouTube Food Journey"
+- Dual CTA: 
+  - Primary: "View Menu" (solid button)
+  - Secondary: "Watch Our Story" (outlined button)
+- Trust Badge: "★★★★★ Rated by [XXX]K+ Food Lovers"
+
+**3D Implementation**:
+- ONE signature dish (burger/biryani/thali) in 3D
+- Subtle rotation (20-30 degree oscillation)
+- Realistic lighting: warm key light, soft shadows
+- Auto-rotate with mouse parallax (subtle, 5-10% movement)
+- High polygon count for photorealism, optimized for web
+
+---
+
+### 2. QUICK STATS BAR - "Credibility Strip"
+**Objective**: Instant trust indicators
+
+Horizontal statistics bar (fixed/sticky below hero):
+```
+[📦 500+ Orders Delivered] | [⭐ 4.8/5 Rating] | [🎥 [XXX]K YouTube Subscribers] | [🕐 Express 30min Delivery]
+```
+- Clean icons, bold numbers, subtle animations on scroll-into-view
+- Background: Semi-transparent dark overlay
+
+---
+
+### 3. FEATURED MENU SECTION - "Core Offering"
+**Objective**: Showcase best-selling items with premium presentation
+
+**Layout**: Asymmetric grid with featured items
+
+```
+Category Pills (Horizontal scroll):
+[All Items] [Signature Dishes] [Biryanis] [Curries] [Breads] [Beverages] [Combos] [Desserts]
+- Active state with underline animation
+- Smooth filter transitions
+```
+
+**Menu Card Design** (Professional, not cartoonish):
+```
+Each item card includes:
+├── High-res food photo (16:9 ratio, professional plating)
+├── 3D model toggle icon (click to view 360°)
+├── Item name (elegant typography)
+├── Description (1-2 lines, mouth-watering adjectives)
+├── Ingredients/USP tags: [Spicy] [Chef's Special] [Bestseller]
+├── Price (₹XXX) - bold, clear
+├── Portion size indicator
+├── "Add to Order" button (with smooth hover state)
+└── Nutritional info icon (optional detail view)
+
+Card Interactions:
+- Hover: Gentle lift (translateY -8px) + shadow increase
+- Image: Gentle zoom on hover (scale 1.05)
+- Click: Opens detailed modal with 3D view option
+```
+
+**3D Menu Item Viewer** (Modal/Overlay):
+- Clean white/cream background
+- 3D model of dish (GLTF format, food-grade quality)
+- Orbit controls: User can rotate 360°, zoom in/out
+- Realistic materials: Glossy sauces, textured bread, fresh vegetables
+- Professional lighting rig (three-point lighting)
+- Side panel: Full description, ingredients, allergens, customization options
+- "Add to Cart" CTA prominent
+- Close button (X) top-right
+
+**Menu Categories to Include**:
+
+1. **Starters/Appetizers** (6-8 items)
+   - Wings, samosas, kebabs, fries, etc.
+   
+2. **Main Course** (10-15 items)
+   - Biryanis, curries, rice bowls, wraps, etc.
+   
+3. **Breads** (4-6 items)
+   - Naan, roti, paratha varieties
+   
+4. **Beverages** (8-10 items)
+   - Lassi, sodas, traditional drinks, shakes
+   
+5. **Desserts** (4-6 items)
+   - Traditional sweets, modern desserts
+   
+6. **Sides** (5-7 items)
+   - Raita, salads, chutneys, extras
+
+---
+
+### 4. COMBO MEALS SECTION - "Value Proposition"
+**Objective**: Drive higher order values, showcase variety
+
+**Design Approach**: 
+- Large cards (3-4 combos featured)
+- Each combo shows ALL included items
+- 3D presentation: Items arranged on virtual plate/tray
+- Clear savings highlighted: "Save ₹100" badge
+
+**Combo Card Structure**:
+```
+┌─────────────────────────────────────┐
+│  [3D Plate View of All Items]      │ ← Interactive 3D or high-quality composite image
+├─────────────────────────────────────┤
+│  COMBO NAME: "Family Feast"        │
+│  Perfect for 3-4 people             │
+│                                     │
+│  Includes:                          │
+│  ✓ 2x Main Course                  │
+│  ✓ 4x Breads                       │
+│  ✓ 2x Beverages                    │
+│  ✓ 1x Dessert                      │
+│                                     │
+│  ₹899 ₹749  [SAVE ₹150]           │
+│                                     │
+│  [Order This Combo] ←─────────────  │
+└─────────────────────────────────────┘
+```
+
+**Combo Types**:
+- Individual Meal Deal
+- Duo Combo (2 people)
+- Family Pack (4 people)
+- Party Pack (6-8 people)
+- Weekly Subscription options
+
+---
+
+### 5. SPECIALTIES SHOWCASE - "What Sets Us Apart"
+**Objective**: Differentiation and quality signals
+
+**Layout**: 4-column grid (responsive to 2-col on mobile)
+
+**Content Blocks**:
+1. **Fresh Daily Prep**
+   - Icon: Fresh ingredients
+   - Text: "Sourced daily from local markets"
+   
+2. **YouTube-Tested Recipes**
+   - Icon: Play button + checkmark
+   - Text: "Every dish featured and reviewed on our channel"
+   
+3. **Hygiene First**
+   - Icon: FSSAI certification
+   - Text: "5-star hygiene rating, regular audits"
+   
+4. **Express Delivery**
+   - Icon: Fast delivery
+   - Text: "Hot meals in 30 minutes across Delhi"
+
+**Visual Treatment**: 
+- Minimal icons (line art, not cartoonish)
+- Hover reveals more detail
+- Clean white cards with subtle shadows
+
+---
+
+### 6. THE JOURNEY SECTION - "From YouTube to Your Kitchen"
+**Objective**: Build trust through authenticity and story
+
+**Layout**: Split-screen design (60/40)
+
+**Left Side** - Video Showcase:
+- Embedded YouTube video (Tushar's best food vlog)
+- Video thumbnail: High-quality, professional
+- Play button overlay (custom-styled)
+- Below video: Channel stats
+  ```
+  [YouTube Logo] [XXX]K Subscribers | [XX] Million Views
+  [Subscribe on YouTube →]
+  ```
+
+**Right Side** - Story:
+```
+Headline: "A Passion That Became a Promise"
+
+Body Copy (Professional, authentic):
+"What started as a love for exploring Delhi's food scene on 
+YouTube has transformed into [Brand Name]. Every recipe you'll 
+find here has been tested, tasted, and perfected through 
+countless food adventures documented on our channel.
+
+We're not just another cloud kitchen – we're food enthusiasts 
+who decided to bring the same authentic flavors we discovered 
+and shared with [XXX]K+ subscribers directly to your table.
+
+From street food gems to home-style classics, every dish 
+carries the stamp of approval from our YouTube community."
+
+[Watch Our Food Journey →]
+```
+
+**Bottom**: YouTube Video Grid (3-4 videos)
+- Small thumbnails of related food vlogs
+- "See More on YouTube" link
+
+**Design Notes**:
+- This section is important but NOT dominant
+- Positioned mid-page, after main menu
+- Professional tone, avoid over-selling the YouTube angle
+- Focus on credibility, not vanity metrics
+
+---
+
+### 7. CUSTOMER REVIEWS - "Social Proof"
+**Objective**: Build confidence through testimonials
+
+**Layout**: Carousel/Slider
+
+**Review Card Design**:
+```
+┌────────────────────────────────┐
+│  ★★★★★                        │
+│                                │
+│  "Authentic flavors, exactly   │
+│   as described. The biryani    │
+│   lived up to the hype!"       │
+│                                │
+│  - Priya M., South Delhi       │
+│  [Verified Order]              │
+└────────────────────────────────┘
+```
+
+**Review Sources**:
+- Zomato/Swiggy ratings (with logos)
+- Google Reviews
+- Direct customer feedback
+- YouTube comments (selected, relevant to food quality)
+
+**Stats Display**:
+- Overall rating: 4.8/5
+- Total reviews: [XXX]+
+- Repeat customer rate: XX%
+
+---
+
+### 8. MENU DOWNLOAD & CATERING - "Additional Services"
+
+**Two-column section**:
+
+**Left**: Full Menu PDF
+- "Download Complete Menu"
+- Professional PDF design
+- Includes all items, prices, images
+
+**Right**: Bulk Orders/Catering
+- Form for party orders
+- "Planning an event? We cater!"
+- Fields: Event type, date, guest count, requirements
+- WhatsApp quick inquiry button
+
+---
+
+### 9. ORDER & DELIVERY SECTION - "How to Get Your Food"
+
+**Three Order Methods** (Card layout):
+
+1. **Direct Order** (WhatsApp/Call)
+   - Large WhatsApp button with number
+   - Phone number with click-to-call
+   - "Order directly, customize freely"
+
+2. **Food Apps**
+   - Zomato, Swiggy logos/buttons
+   - "Find us on your favorite app"
+
+3. **Pickup**
+   - Address with Google Maps embed
+   - "Collect yourself, save on delivery"
+   - Operating hours
+
+**Delivery Map**:
+- Interactive map showing delivery radius
+- "We deliver to: [List of areas]"
+- Estimated delivery times by area
+
+---
+
+### 10. FOOTER - Professional & Complete
+
+**Multi-column layout**:
+
+**Column 1**: Brand
+- Logo
+- Tagline: "From YouTube Passion to Your Plate"
+- Social media icons (Instagram, YouTube, Facebook)
+
+**Column 2**: Quick Links
+- Menu
+- Combos
+- About Us
+- Contact
+- Privacy Policy
+- Terms of Service
+
+**Column 3**: Contact
+- Address (with Google Maps link)
+- Phone number
+- Email
+- WhatsApp Business
+- Operating hours
+
+**Column 4**: Stay Updated
+- Email newsletter signup
+- "Get exclusive deals and new menu updates"
+- Input field + Subscribe button
+
+**Bottom Bar**:
+- Copyright © 2026 [Brand Name]
+- FSSAI License: [Number]
+- "Website designed by [Your Name/Studio]" ← Your credit
+
+---
+
+## 3D Implementation Guidelines - CRITICAL
+
+### 3D Asset Quality Standards
+**DO'S**:
+✅ Use photorealistic food models (high polygon count, 10k-50k vertices)
+✅ PBR materials (Physically Based Rendering): Metalness, roughness, normal maps
+✅ Realistic textures: High-res diffuse maps (2048x2048 minimum)
+✅ Professional lighting: Three-point lighting (key, fill, rim)
+✅ Subtle animations: Gentle rotation (5-10 degrees/second)
+✅ Optimize for web: Draco compression, LOD (Level of Detail)
+✅ Fallback to high-quality 2D images on low-end devices
+
+**DON'TS**:
+❌ Cartoon-style or low-poly models
+❌ Overly bright, unrealistic colors
+❌ Fast spinning or bouncing animations
+❌ Too many 3D elements competing for attention
+❌ 3D for the sake of 3D (must serve presentation)
+❌ Heavy files causing load delays
+
+### 3D Integration Points
+
+**1. Hero Section** (ONE primary 3D model):
+```javascript
+// Example: Signature dish with subtle animation
+const dish3D = {
+  model: 'hero_biryani.gltf',
+  position: { x: 0, y: 0, z: 0 },
+  rotation: { autoRotateSpeed: 0.5 },
+  lighting: {
+    ambient: warm,
+    directional: { intensity: 1.5, position: [5, 10, 7.5] },
+    spotlight: { color: 0xffffff, intensity: 0.8 }
+  },
+  camera: { fov: 35, position: [0, 1, 5] },
+  controls: { enableZoom: false, enablePan: false }
+}
+```
+
+**2. Menu Item Modals** (On-demand loading):
+```javascript
+// Only load 3D when user clicks "View in 3D"
+onClick: loadModel('item_burger.gltf')
+- Smooth transition from 2D to 3D view
+- Loading indicator: Elegant spinner
+- OrbitControls: Drag to rotate, scroll to zoom
+- Reset view button
+```
+
+**3. Combo Plates** (Composite 3D scenes):
+```javascript
+// Multiple items arranged on a plate
+comboScene = {
+  plate: 'base_plate.gltf',
+  items: [
+    { model: 'biryani_bowl.gltf', position: [-2, 0, 0] },
+    { model: 'naan.gltf', position: [2, 0, 0] },
+    { model: 'raita_bowl.gltf', position: [0, 0, 2] }
+  ],
+  presentation: 'restaurant_table_setting'
+}
+```
+
+### Performance Optimization
+- Lazy load 3D assets (load only when in viewport)
+- Use WebGL renderer with antialias
+- Implement texture compression
+- Provide 2D fallback for unsupported browsers
+- Max file size per model: 2-5MB
+- FPS target: 60fps on mid-range devices
+
+---
+
+## Technical Implementation
+
+### Tech Stack Requirements
+```javascript
+// Core Technologies
+HTML5 (Semantic markup)
+CSS3 (Grid, Flexbox, Custom Properties)
+JavaScript (ES6+, Modules)
+
+// 3D & Animation
+Three.js (r140+) - 3D rendering
+GSAP 3 - Smooth animations
+GLTFLoader - 3D model loading
+OrbitControls - 3D interaction
+
+// Performance
+Intersection Observer - Lazy loading
+Web Workers - Heavy computations
+Service Workers - Offline capability (optional)
+
+// Utilities
+Axios/Fetch - API calls (for future orders)
+Swiper.js - Carousels
+AOS (Animate On Scroll) - Scroll animations
+```
+
+### File Structure
+```
+project/
+├── index.html
+├── css/
+│   ├── main.css (Core styles)
+│   ├── menu.css (Menu-specific)
+│   ├── animations.css
+│   └── responsive.css
+├── js/
+│   ├── main.js (Initialization)
+│   ├── three-scene.js (3D setup)
+│   ├── menu-filter.js
+│   ├── animations.js
+│   └── utils.js
+├── assets/
+│   ├── images/
+│   │   ├── hero/
+│   │   ├── menu-items/
+│   │   └── icons/
+│   ├── models/ (GLTF files)
+│   │   ├── hero_dish.gltf
+│   │   ├── menu_items/
+│   │   └── combos/
+│   ├── videos/ (YouTube embeds)
+│   └── fonts/
+└── data/
+    └── menu.json (Menu data structure)
+```
+
+### Menu Data Structure (JSON)
+```json
+{
+  "menuItems": [
+    {
+      "id": "item_001",
+      "name": "Chicken Biryani",
+      "category": "main_course",
+      "subCategory": "biryani",
+      "description": "Aromatic basmati rice layered with tender chicken, fragrant spices, and saffron",
+      "price": 299,
+      "originalPrice": 349,
+      "image": "assets/images/menu-items/chicken-biryani.jpg",
+      "model3D": "assets/models/menu_items/biryani.gltf",
+      "tags": ["bestseller", "spicy", "signature"],
+      "portionSize": "Serves 1",
+      "ingredients": ["Chicken", "Basmati Rice", "Yogurt", "Spices"],
+      "allergens": ["Dairy"],
+      "nutritionalInfo": {
+        "calories": 650,
+        "protein": "35g",
+        "carbs": "75g"
+      },
+      "preparationTime": "20 mins",
+      "rating": 4.8,
+      "reviewCount": 156
+    }
+    // ... more items
+  ],
+  "combos": [
+    {
+      "id": "combo_001",
+      "name": "Classic Duo",
+      "description": "Perfect meal for two",
+      "items": ["item_001", "item_023", "item_045", "item_067"],
+      "price": 599,
+      "originalPrice": 750,
+      "savings": 151,
+      "image": "assets/images/combos/classic-duo.jpg",
+      "model3D": "assets/models/combos/duo-plate.gltf"
+    }
+    // ... more combos
+  ]
+}
+```
+
+---
+
+## Responsive Design Breakpoints
+
+```css
+/* Mobile First Approach */
+/* Default: Mobile (320px - 767px) */
+
+@media (min-width: 768px) {
+  /* Tablet */
+  - 2-column menu grid
+  - Larger text
+}
+
+@media (min-width: 1024px) {
+  /* Desktop */
+  - 3-4 column menu grid
+  - Side-by-side layouts
+  - Full 3D capabilities
+}
+
+@media (min-width: 1440px) {
+  /* Large Desktop */
+  - Maximum width: 1400px
+  - Enhanced 3D effects
+}
+```
+
+### Mobile-Specific Considerations
+- Touch-friendly buttons (min 44x44px)
+- Simplified 3D (or 2D fallback)
+- Collapsible menu categories
+- Sticky "Order Now" button at bottom
+- Optimized images (WebP format)
+- Lazy loading all images
+- Reduced animations
+
+---
+
+## Animation & Interaction Guidelines
+
+### Scroll Animations
+```javascript
+// Trigger animations on scroll-into-view
+Elements to animate:
+- Menu cards: Fade up + stagger (100ms delay between each)
+- Stats counters: Count-up animation
+- Section headings: Fade in with underline draw
+- Images: Subtle zoom-in effect
+```
+
+### Hover States
+```css
+Menu Cards:
+- Transform: translateY(-8px)
+- Box-shadow: 0 12px 24px rgba(0,0,0,0.15)
+- Image: scale(1.05)
+- Transition: all 0.3s ease-out
+
+Buttons:
+- Background color shift
+- Slight scale (1.02)
+- Subtle glow effect
+- Smooth transition (0.2s)
+```
+
+### Loading States
+- Skeleton screens for menu items
+- Elegant spinner for 3D model loading
+- Progress indicator for image loading
+- Smooth fade-in when content ready
+
+---
+
+## SEO & Performance Optimization
+
+### Meta Tags
+```html
+<title>[Brand Name] - Authentic Cloud Kitchen in Delhi | Order Now</title>
+<meta name="description" content="Experience authentic flavors from YouTube's trusted food reviewer. Fresh, chef-tested recipes delivered in 30 mins across Delhi. Order biryani, curries, combos & more.">
+<meta name="keywords" content="cloud kitchen delhi, food delivery, biryani, indian food, [brand name], authentic recipes">
+
+<!-- Open Graph -->
+<meta property="og:title" content="[Brand Name] - Authentic Cloud Kitchen">
+<meta property="og:description" content="From YouTube to Your Plate - Fresh, Authentic Meals">
+<meta property="og:image" content="[hero-dish-image.jpg]">
+<meta property="og:type" content="restaurant">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "[Brand Name]",
+  "image": "[logo-url]",
+  "servesCuisine": "Indian",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Delhi",
+    "addressCountry": "IN"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "XXX"
+  }
+}
+</script>
+```
+
+### Performance Checklist
+✅ Compress all images (use WebP with JPEG fallback)
+✅ Minify CSS/JS
+✅ Lazy load images and 3D models
+✅ Use CDN for libraries
+✅ Implement browser caching
+✅ Optimize font loading (font-display: swap)
+✅ Critical CSS inline in `<head>`
+✅ Defer non-critical JavaScript
+✅ Target Lighthouse score: 90+ on all metrics
+
+---
+
+## Accessibility Standards (WCAG 2.1 AA)
+
+```html
+<!-- Semantic HTML -->
+<nav aria-label="Main navigation">
+<main aria-label="Menu and ordering">
+<section aria-labelledby="menu-heading">
+
+<!-- Alt text for all images -->
+<img src="biryani.jpg" alt="Aromatic chicken biryani with basmati rice and garnished with fried onions">
+
+<!-- Keyboard navigation -->
+- Tab through all interactive elements
+- Enter to activate buttons
+- Arrow keys for carousels
+- Escape to close modals
+
+<!-- Color contrast -->
+- Text: Minimum 4.5:1 contrast ratio
+- Buttons: 3:1 minimum
+
+<!-- Focus indicators -->
+- Visible focus outline on all interactive elements
+- Skip to content link
+
+<!-- Screen reader support -->
+- ARIA labels on all buttons
+- ARIA live regions for dynamic content
+- Descriptive link text (no "click here")
+```
+
+---
+
+## Content Writing Guidelines
+
+### Tone of Voice
+- **Professional yet warm**: Not corporate, not overly casual
+- **Confident**: "Fresh ingredients daily" not "We try to use fresh ingredients"
+- **Descriptive**: Use sensory words (aromatic, tender, crispy, rich)
+- **Authentic**: Honest about YouTube origins, don't oversell
+- **Action-oriented**: Clear CTAs throughout
+
+### Menu Description Formula
+```
+[Item Name]
+[One-line sensory description highlighting key ingredients/preparation]
+
+Example:
+"Chicken Tikka Masala
+Tender charcoal-grilled chicken in a velvety tomato cream sauce, aromatic with fenugreek and garam masala"
+
+NOT:
+"Chicken Tikka Masala
+A popular Indian dish with chicken and sauce"
+```
+
+### Avoid These Phrases
+❌ "Best in Delhi" (unprovable)
+❌ "Secret recipe" (overused)
+❌ "Grandma's recipe" (unless actually true)
+❌ "Authentic" without context
+❌ Over-the-top claims
+
+---
+
+## Call-to-Action (CTA) Strategy
+
+### Primary CTAs (Most Prominent)
+1. "Order Now via WhatsApp" - Green button
+2. "View Full Menu" - Main button
+3. "Order on Zomato/Swiggy" - App buttons
+
+### Secondary CTAs
+- "Watch Our Story"
+- "Download Menu PDF"
+- "Subscribe for Offers"
+- "View in 3D"
+
+### CTA Design Standards
+```css
+Primary Button:
+- Background: #25D366 (WhatsApp green) or brand color
+- Text: White, bold
+- Padding: 14px 32px
+- Border-radius: 8px
+- Box-shadow: 0 4px 12px rgba(0,0,0,0.2)
+- Hover: Lift + darken
+- Icon: WhatsApp or phone icon
+
+Secondary Button:
+- Background: Transparent
+- Border: 2px solid brand color
+- Text: Brand color
+- Hover: Fill with brand color
+```
+
+---
+
+## Testing Checklist
+
+### Cross-Browser Testing
+- [ ] Chrome (latest)
+- [ ] Firefox (latest)
+- [ ] Safari (desktop & iOS)
+- [ ] Edge
+- [ ] Samsung Internet
+
+### Device Testing
+- [ ] iPhone (various sizes)
+- [ ] Android phones
+- [ ] iPad/tablets
+- [ ] Desktop (1080p, 1440p, 4K)
+- [ ] Laptop screens
+
+### Functionality Testing
+- [ ] All links work
+- [ ] Menu filtering smooth
+- [ ] 3D models load correctly
+- [ ] Forms validate properly
+- [ ] Videos play
+- [ ] Images load (with fallbacks)
+- [ ] Animations perform well
+- [ ] WhatsApp/call buttons work
+- [ ] Responsive on all breakpoints
+
+### Performance Testing
+- [ ] Lighthouse score 90+
+- [ ] Load time under 3 seconds
+- [ ] 3D models load without blocking
+- [ ] Smooth scrolling
+- [ ] No layout shifts (CLS < 0.1)
+
+---
+
+## Launch Checklist
+
+### Pre-Launch
+- [ ] Replace all placeholder content
+- [ ] Add real menu items with prices
+- [ ] Upload professional food photography
+- [ ] Embed actual YouTube videos
+- [ ] Add real testimonials/reviews
+- [ ] Configure contact forms
+- [ ] Test order flows
+- [ ] Set up analytics (Google Analytics)
+- [ ] Add FSSAI license number
+- [ ] Configure WhatsApp Business link
+- [ ] Add social media links
+- [ ] Create sitemap.xml
+- [ ] Set up robots.txt
+
+### Post-Launch
+- [ ] Submit to Google Search Console
+- [ ] Share on social media
+- [ ] Get initial reviews
+- [ ] Monitor performance
+- [ ] A/B test CTAs
+- [ ] Collect user feedback
+- [ ] Iterate based on data
+
+---
+
+## Presentation to Client (Tushar)
+
+### Portfolio Package to Deliver
+
+1. **Live Demo Link**
+   - Hosted on Netlify/Vercel (free tier)
+   - Custom domain (if possible): tusharskitchen.com
+
+2. **Walk-through Video**
+   - Screen recording showing all features
+   - Highlight 3D elements
+   - Show mobile responsiveness
+   - Duration: 2-3 minutes
+
+3. **Feature Document** (PDF)
+   - List of all features implemented
+   - Technology stack used
+   - Future enhancement possibilities
+   - Your contact info and rates
+
+4. **Customization Guide**
+   - How to update menu items
+   - How to change images
+   - How to update prices
+   - Basic maintenance instructions
+
+### Pitch Points to Emphasize
+
+1. **Professional Quality**: "Restaurant-grade website that competes with major platforms"
+2. **Unique Differentiation**: "Your YouTube journey gives you credibility no competitor has"
+3. **3D Innovation**: "Interactive 3D menu - customers can see dishes from all angles"
+4. **Mobile-First**: "80% of food orders are mobile - this is optimized for phone users"
+5. **SEO-Ready**: "Built to rank on Google when customers search for cloud kitchens in Delhi"
+6. **Order-Focused**: "Every section designed to drive orders, not just look pretty"
+
+---
+
+## Final Output Requirements
+
+Generate a **production-ready, single-page website** with:
+
+1. ✅ Clean, semantic HTML5
+2. ✅ Modern CSS (Grid, Flexbox, Custom Properties)
+3. ✅ Vanilla JavaScript (ES6+) or lightweight framework
+4. ✅ Three.js for 3D elements (CDN)
+5. ✅ GSAP for animations (CDN)
+6. ✅ Fully responsive (mobile-first)
+7. ✅ Commented code for easy customization
+8. ✅ Placeholder content clearly marked
+9. ✅ Professional-grade design
+10. ✅ Optimized performance
+11. ✅ Accessible (WCAG AA)
+12. ✅ Cross-browser compatible
+
+**Code Quality Standards**:
+- Modular, reusable components
+- Clear naming conventions
+- Comprehensive comments
+- DRY principles (Don't Repeat Yourself)
+- Error handling for 3D loading
+- Graceful degradation for unsupported features
+
+---
+
+## Success Metrics
+
+**This website succeeds if:**
+1. ✅ Looks like it cost ₹50,000-100,000 to build (actual freelance market rate)
+2. ✅ Loads in under 3 seconds on 4G
+3. ✅ Works flawlessly on iPhone and Android
+4. ✅ Makes food look irresistibly delicious
+5. ✅ Clear path to order on every section
+6. ✅ Establishes trust through YouTube credibility
+7. ✅ Showcases your development skills impressively
+8. ✅ Client says "This is exactly what I needed" or better
+
+---
+
+## Additional Notes
+
+- **Content Realism**: Use plausible Delhi-based food items, realistic pricing (₹150-₹500 range)
+- **Cultural Sensitivity**: Respect Indian food culture, proper dish names, appropriate imagery
+- **Seasonal Offers**: Leave space for promotional banners
+- **Future Scalability**: Code should allow easy addition of new menu items
+- **Analytics Ready**: Structure allows easy integration of conversion tracking
+
+---
+
+**This prompt creates a RESTAURANT-FIRST, FOOD-FOCUSED website with strategic YouTube integration, professional 3D elements, and premium design that will impress both the client and demonstrate exceptional development skills.**
