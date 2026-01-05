@@ -39,14 +39,19 @@ export default function Home() {
   
   // State for menu filtering
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [dietaryFilter, setDietaryFilter] = useState<"all" | "veg" | "non-veg">("all");
   
   // We'll fetch all items and filter client side for smooth tab transitions 
   // (In a huge app, you'd fetch per tab, but for a restaurant menu this is faster UX)
   const { data: allMenuItems, isLoading: isLoadingMenu } = useMenuItems();
   
-  const filteredItems = selectedCategory === "all" 
-    ? allMenuItems 
-    : allMenuItems?.filter(item => item.categoryId.toString() === selectedCategory);
+  const filteredItems = allMenuItems?.filter(item => {
+    const categoryMatch = selectedCategory === "all" || item.categoryId.toString() === selectedCategory;
+    const dietaryMatch = dietaryFilter === "all" 
+      || (dietaryFilter === "veg" && item.isVegetarian)
+      || (dietaryFilter === "non-veg" && !item.isVegetarian);
+    return categoryMatch && dietaryMatch;
+  });
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
@@ -255,56 +260,59 @@ export default function Home() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
-            <SectionHeading 
-              title="Explore Our Menu" 
-              subtitle="Culinary Delights" 
-              align="left"
-            />
-            
-            <div className="flex gap-4 mb-2">
-              <a 
-                href="https://www.zomato.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-[#E23744] hover:bg-[#E23744]/90 text-white px-6 py-3 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg"
-              >
-                <span className="font-bold tracking-wide">Order on Zomato</span>
-              </a>
-              <a 
-                href="https://www.swiggy.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-[#FC8019] hover:bg-[#FC8019]/90 text-white px-6 py-3 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg"
-              >
-                <span className="font-bold tracking-wide">Order on Swiggy</span>
-              </a>
-            </div>
-          </div>
+          <SectionHeading 
+            title="Explore Our Menu" 
+            subtitle="Culinary Delights" 
+          />
 
           <Tabs 
             defaultValue="all" 
             className="w-full mt-12"
             onValueChange={setSelectedCategory}
           >
-            <div className="flex justify-center mb-12 overflow-x-auto pb-4">
-              <TabsList className="bg-white/5 border border-white/10 p-1 h-auto rounded-full">
-                <TabsTrigger 
-                  value="all"
-                  className="rounded-full px-6 py-3 text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-black text-white/70"
-                >
-                  All Items
-                </TabsTrigger>
-                {categories?.map((cat) => (
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+              <div className="overflow-x-auto pb-2 w-full md:w-auto">
+                <TabsList className="bg-white/5 border border-white/10 p-1 h-auto rounded-full flex w-max">
                   <TabsTrigger 
-                    key={cat.id} 
-                    value={cat.id.toString()}
+                    value="all"
                     className="rounded-full px-6 py-3 text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-black text-white/70"
                   >
-                    {cat.name}
+                    All Items
                   </TabsTrigger>
+                  {categories?.map((cat) => (
+                    <TabsTrigger 
+                      key={cat.id} 
+                      value={cat.id.toString()}
+                      className="rounded-full px-6 py-3 text-sm font-medium data-[state=active]:bg-primary data-[state=active]:text-black text-white/70"
+                    >
+                      {cat.name}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </div>
+
+              {/* Dietary Filter Toggle */}
+              <div className="flex bg-white/5 border border-white/10 p-1 rounded-full shrink-0">
+                {[
+                  { id: "all", label: "All" },
+                  { id: "veg", label: "Veg Only" },
+                  { id: "non-veg", label: "Non-Veg" }
+                ].map((type) => (
+                  <button
+                    key={type.id}
+                    onClick={() => setDietaryFilter(type.id as any)}
+                    className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
+                      dietaryFilter === type.id 
+                        ? "bg-white text-black shadow-lg" 
+                        : "text-white/50 hover:text-white"
+                    }`}
+                  >
+                    {type.id === "veg" && <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2" />}
+                    {type.id === "non-veg" && <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2" />}
+                    {type.label}
+                  </button>
                 ))}
-              </TabsList>
+              </div>
             </div>
 
             <TabsContent value={selectedCategory} className="mt-0">
@@ -328,10 +336,23 @@ export default function Home() {
             </TabsContent>
           </Tabs>
           
-          <div className="text-center mt-16">
-            <Button variant="outline" size="lg" className="rounded-full border-primary/50 text-primary hover:bg-primary hover:text-black">
-              View Full Menu <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-16">
+            <a 
+              href="https://www.zomato.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-[#E23744] hover:bg-[#E23744]/90 text-white px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95 shadow-xl min-w-[200px] justify-center"
+            >
+              <span className="font-bold tracking-wider text-lg uppercase">Order on Zomato</span>
+            </a>
+            <a 
+              href="https://www.swiggy.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-[#FC8019] hover:bg-[#FC8019]/90 text-white px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95 shadow-xl min-w-[200px] justify-center"
+            >
+              <span className="font-bold tracking-wider text-lg uppercase">Order on Swiggy</span>
+            </a>
           </div>
         </div>
       </section>
