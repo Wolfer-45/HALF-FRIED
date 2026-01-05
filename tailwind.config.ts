@@ -11,6 +11,11 @@ export default {
         sm: ".1875rem", /* 3px */
       },
       colors: {
+        // Custom Brand Colors
+        burgundy: "#7D1935",
+        charcoal: "#1A1A1A",
+        gold: "#D4AF37",
+        cream: "#FFF8E7",
         // Flat / base colors (regular buttons)
         background: "hsl(var(--background) / <alpha-value>)",
         foreground: "hsl(var(--foreground) / <alpha-value>)",
