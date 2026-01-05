@@ -16,8 +16,15 @@ export function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-colors"
+      className={`group relative bg-white/5 border rounded-2xl overflow-hidden transition-all duration-300 ${
+        item.isBestseller 
+          ? "border-primary/40 shadow-[0_0_20px_rgba(212,175,55,0.15)] ring-1 ring-primary/20 scale-[1.02]" 
+          : "border-white/10 hover:border-primary/50"
+      }`}
     >
+      {item.isBestseller && (
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent z-10" />
+      )}
       <div className="aspect-[4/3] overflow-hidden relative">
         <img
           src={item.imageUrl}

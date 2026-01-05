@@ -430,6 +430,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* === OUTLET VIDEOS === */}
+      <section className="py-24 bg-charcoal-light border-y border-white/5">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            title="Outlet Highlights" 
+            subtitle="Behind the Scenes" 
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            {[
+              "https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1000&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop"
+            ].map((video, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer"
+              >
+                <img src={video} alt={`Outlet Highlight ${i+1}`} className="w-full h-full object-cover transition-transform group-hover:scale-110" />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                  <div className="w-12 h-12 bg-primary/80 rounded-full flex items-center justify-center">
+                    <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[12px] border-l-black border-b-[6px] border-b-transparent ml-1" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* === FOOTER === */}
       <footer className="bg-charcoal-light pt-20 pb-10 border-t border-white/5">
         <div className="container mx-auto px-4">
@@ -449,6 +482,24 @@ export default function Home() {
                   <Youtube size={18} />
                 </a>
               </div>
+              <div className="mt-8 flex flex-col gap-3">
+                <a 
+                  href="https://www.zomato.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 bg-[#E23744] hover:bg-[#E23744]/90 text-white px-4 py-2 rounded-lg transition-colors w-fit"
+                >
+                  <span className="font-bold">Zomato</span>
+                </a>
+                <a 
+                  href="https://www.swiggy.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 bg-[#FC8019] hover:bg-[#FC8019]/90 text-white px-4 py-2 rounded-lg transition-colors w-fit"
+                >
+                  <span className="font-bold">Swiggy</span>
+                </a>
+              </div>
             </div>
             
             <div>
@@ -461,29 +512,23 @@ export default function Home() {
               </ul>
             </div>
             
-            <div>
-              <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Legal</h4>
-              <ul className="space-y-4">
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Cookie Policy</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Contact Us</h4>
-              <ul className="space-y-4">
+            <div className="col-span-1 md:col-span-2">
+              <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Find Us</h4>
+              <div className="rounded-2xl overflow-hidden h-48 border border-white/10 grayscale hover:grayscale-0 transition-all duration-500">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.114827188432!2d77.206584!3d28.612849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5d347ec393%3A0x407156118273a30!2sDelhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <ul className="space-y-4 mt-6">
                 <li className="flex items-center gap-3 text-muted-foreground">
                   <MapPin size={18} className="text-primary" />
-                  <span>123 Culinary Ave, Foodie City</span>
-                </li>
-                <li className="flex items-center gap-3 text-muted-foreground">
-                  <Phone size={18} className="text-primary" />
-                  <span>+91 98765 43210</span>
-                </li>
-                <li className="flex items-center gap-3 text-muted-foreground">
-                  <Mail size={18} className="text-primary" />
-                  <span>hello@cheftable.com</span>
+                  <span>123 Culinary Ave, New Delhi, 110001</span>
                 </li>
               </ul>
             </div>
