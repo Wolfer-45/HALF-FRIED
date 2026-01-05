@@ -255,10 +255,32 @@ export default function Home() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <SectionHeading 
-            title="Explore Our Menu" 
-            subtitle="Culinary Delights" 
-          />
+          <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+            <SectionHeading 
+              title="Explore Our Menu" 
+              subtitle="Culinary Delights" 
+              align="left"
+            />
+            
+            <div className="flex gap-4 mb-2">
+              <a 
+                href="https://www.zomato.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-[#E23744] hover:bg-[#E23744]/90 text-white px-6 py-3 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg"
+              >
+                <span className="font-bold tracking-wide">Order on Zomato</span>
+              </a>
+              <a 
+                href="https://www.swiggy.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-[#FC8019] hover:bg-[#FC8019]/90 text-white px-6 py-3 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg"
+              >
+                <span className="font-bold tracking-wide">Order on Swiggy</span>
+              </a>
+            </div>
+          </div>
 
           <Tabs 
             defaultValue="all" 
@@ -361,11 +383,11 @@ export default function Home() {
       {/* === STORY / YOUTUBE SECTION === */}
       <section id="story" className="py-0 bg-charcoal-light overflow-hidden">
         <div className="grid md:grid-cols-2 min-h-[600px]">
-          <div className="relative h-[400px] md:h-full">
+          <div className="relative h-[400px] md:h-full overflow-hidden">
             <img 
               src={CHEF_IMG} 
               alt="Chef Cooking" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-primary/20 mix-blend-overlay" />
             
@@ -464,7 +486,7 @@ export default function Home() {
       </section>
 
       {/* === FOOTER === */}
-      <footer className="bg-charcoal-light pt-20 pb-10 border-t border-white/5">
+      <footer className="bg-[#121212] pt-20 pb-10 border-t border-white/5">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-1">
@@ -482,24 +504,6 @@ export default function Home() {
                   <Youtube size={18} />
                 </a>
               </div>
-              <div className="mt-8 flex flex-col gap-3">
-                <a 
-                  href="https://www.zomato.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 bg-[#E23744] hover:bg-[#E23744]/90 text-white px-4 py-2 rounded-lg transition-colors w-fit"
-                >
-                  <span className="font-bold">Zomato</span>
-                </a>
-                <a 
-                  href="https://www.swiggy.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 bg-[#FC8019] hover:bg-[#FC8019]/90 text-white px-4 py-2 rounded-lg transition-colors w-fit"
-                >
-                  <span className="font-bold">Swiggy</span>
-                </a>
-              </div>
             </div>
             
             <div>
@@ -514,7 +518,7 @@ export default function Home() {
             
             <div className="col-span-1 md:col-span-2">
               <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Find Us</h4>
-              <div className="rounded-2xl overflow-hidden h-48 border border-white/10 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="rounded-2xl overflow-hidden h-48 border border-white/10 grayscale hover:grayscale-0 transition-all duration-500 shadow-2xl">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.114827188432!2d77.206584!3d28.612849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5d347ec393%3A0x407156118273a30!2sDelhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                   width="100%" 
