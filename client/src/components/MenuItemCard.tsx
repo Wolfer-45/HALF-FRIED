@@ -34,16 +34,21 @@ export function MenuItemCard({ item, onAdd }: MenuItemCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
         
         {/* Badges */}
-        <div className="absolute top-3 right-3 flex gap-2">
+        <div className="absolute top-3 left-3 flex gap-2">
           {item.isVegetarian ? (
-            <span className="bg-green-500/90 p-1.5 rounded-full backdrop-blur-sm" title="Vegetarian">
-              <Leaf size={14} className="text-white" />
-            </span>
+            <div className="bg-white/90 backdrop-blur-sm p-1 rounded border border-green-600 flex items-center gap-1.5 px-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-green-600" />
+              <span className="text-[10px] font-bold text-green-700 uppercase tracking-tight">Veg</span>
+            </div>
           ) : (
-             <span className="bg-red-500/90 p-1.5 rounded-full backdrop-blur-sm" title="Non-Vegetarian">
-              <div className="w-3.5 h-3.5 rounded-full border-2 border-white" />
-            </span>
+            <div className="bg-white/90 backdrop-blur-sm p-1 rounded border border-red-600 flex items-center gap-1.5 px-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-red-600" />
+              <span className="text-[10px] font-bold text-red-700 uppercase tracking-tight">Non-Veg</span>
+            </div>
           )}
+        </div>
+
+        <div className="absolute top-3 right-3 flex gap-2">
           {item.spicyLevel && item.spicyLevel > 0 && (
             <span className="bg-orange-500/90 p-1.5 rounded-full backdrop-blur-sm flex items-center gap-0.5" title="Spicy">
               <Flame size={14} className="text-white" />

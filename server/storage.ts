@@ -62,6 +62,8 @@ export class DatabaseStorage implements IStorage {
         { name: "Breads", slug: "breads" },
         { name: "Beverages", slug: "beverages" },
         { name: "Desserts", slug: "desserts" },
+        { name: "Biryanis", slug: "biryanis" },
+        { name: "Rice Bowls", slug: "rice-bowls" },
       ]).returning();
 
       const starterId = cats[0].id;
@@ -69,9 +71,41 @@ export class DatabaseStorage implements IStorage {
       const breadId = cats[2].id;
       const bevId = cats[3].id;
       const dessertId = cats[4].id;
+      const biryaniId = cats[5].id;
+      const riceBowlId = cats[6].id;
 
       // Menu Items
       await db.insert(menuItems).values([
+        {
+          categoryId: starterId,
+          name: "Veg Spring Rolls",
+          description: "Crispy rolls filled with fresh garden vegetables.",
+          price: 199,
+          imageUrl: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80",
+          isVegetarian: true,
+          isBestseller: false,
+          spicyLevel: 1,
+        },
+        {
+          categoryId: biryaniId,
+          name: "Hyderabadi Chicken Biryani",
+          description: "Long grain basmati rice cooked with aromatic spices and tender chicken.",
+          price: 449,
+          imageUrl: "https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?w=800&q=80",
+          isVegetarian: false,
+          isBestseller: true,
+          spicyLevel: 2,
+        },
+        {
+          categoryId: riceBowlId,
+          name: "Paneer Over Rice",
+          description: "Spiced paneer cubes served over a bed of fragrant jeera rice.",
+          price: 329,
+          imageUrl: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
+          isVegetarian: true,
+          isBestseller: false,
+          spicyLevel: 1,
+        },
         {
           categoryId: starterId,
           name: "Tandoori Chicken Wings",

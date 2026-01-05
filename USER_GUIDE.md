@@ -11,12 +11,25 @@ To update the address, phone number, or email displayed in the footer:
 
 ## 2. Managing Menu Items (Add/Edit/Delete)
 Currently, your menu is seeded from the backend. To manage items:
-1. **Using the Code:** Open `server/storage.ts`.
-2. Inside the `seedData()` function, you'll see blocks like `await db.insert(menuItems).values([...])`.
-3. To **Add** an item: Add a new object to the array with `name`, `description`, `price`, and `imageUrl`.
-4. To **Edit** an item: Modify the values in an existing object.
-5. To **Delete** an item: Remove the object from the array.
-6. After making changes, the server will restart and update the database (Note: the current setup only seeds if the table is empty, so for permanent changes, you would typically use a database management tool or update the `seedData` logic to sync).
+
+### Adding a New Section (Category)
+1. Open `server/storage.ts`.
+2. Find the `cats = await db.insert(categories).values([...])` block.
+3. Add your new section name and a unique slug (e.g., `{ name: "Rice Bowls", slug: "rice-bowls" }`).
+4. Below that, assign it to a variable (e.g., `const riceBowlId = cats[6].id;`) by counting its position in the list (starting from 0).
+
+### Adding/Classifying Items (Veg vs Non-Veg)
+1. In `server/storage.ts`, find the `await db.insert(menuItems).values([...])` block.
+2. To **Add** an item:
+   - `categoryId`: Use the ID variable you defined for that section.
+   - `isVegetarian`: Set to `true` for **Veg** (green indicator) or `false` for **Non-Veg** (red indicator).
+   - `isBestseller`: Set to `true` to highlight the item with a gold border.
+3. To **Delete** an item: Remove the object from the array.
+
+### Important: Syncing Changes
+Since the database only "seeds" once when empty, to see new changes you might need to:
+1. Delete the existing data (for advanced users) OR
+2. Ask me to "Reset the database seed with new categories and items".
 
 ## 3. Changing Images
 All images are sourced from URLs. To change an image:
