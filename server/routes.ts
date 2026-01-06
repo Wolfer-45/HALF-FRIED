@@ -8,8 +8,7 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Seed data on startup
-  await storage.seedData();
+  // No seeding needed as MemStorage is pre-populated
 
   app.get(api.categories.list.path, async (req, res) => {
     const categories = await storage.getCategories();

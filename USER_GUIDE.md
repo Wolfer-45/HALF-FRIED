@@ -1,6 +1,6 @@
-# Tushar's Cloud Kitchen - Comprehensive Management Guide
+# Tushar's Cloud Kitchen - Management Guide
 
-This website is a one-page premium experience. All content is managed via the database and site configuration.
+This website is a one-page premium experience. All content is managed directly in the code for easy hosting without a database.
 
 ## 1. Updating Restaurant Details
 Open `client/src/pages/Home.tsx` to update:
@@ -8,39 +8,22 @@ Open `client/src/pages/Home.tsx` to update:
 - **Address:** Update the address text just below the map.
 - **Order Links:** Find the Zomato/Swiggy buttons at the bottom of the Menu section to update your restaurant URLs.
 
-## 2. Managing Menu Sections (Categories)
-Menu sections are managed in `server/storage.ts` within the `seedData()` function.
-1. Locate the `db.insert(categories)` block.
-2. **To add a section:** Add a new entry like `{ name: "New Section", slug: "new-section" }`.
-3. **Internal Reference:** Below the insert block, assign the new ID to a variable: `const newSectionId = cats[7].id;` (use the correct index).
+## 2. Managing Menu items
+Since there is no database, you manage all categories and items in `server/storage.ts`.
 
-## 3. Managing Menu Items & Dietary Classification
-Items are added in the `db.insert(menuItems)` block in `server/storage.ts`.
+1. Open `server/storage.ts`.
+2. Find the `constructor()` function inside `MemStorage`.
+3. To **Add/Edit/Delete** sections: Update the `this.categories` array.
+4. To **Add/Edit/Delete** items: Update the `this.menuItems` array.
 
 ### Classification: Veg vs Non-Veg
-When adding or editing an item, the `isVegetarian` field controls its classification:
-- `isVegetarian: true` → Item is **Veg**. It will appear under "Veg Only" and have a green indicator.
-- `isVegetarian: false` → Item is **Non-Veg**. It will appear under "Non-Veg" and have a red indicator.
+In the `this.menuItems` array, each item has an `isVegetarian` field:
+- `isVegetarian: true` → Item is **Veg** (appears under "Veg Only" and has a green indicator).
+- `isVegetarian: false` → Item is **Non-Veg** (appears under "Non-Veg" and has a red indicator).
 
-### How Filtering Works
-- The **Veg/Non-Veg toggle** on the website automatically filters the items across ALL sections.
-- If a user selects "Veg Only", they will only see items where `isVegetarian` is `true`.
+### Highlights
+- `isBestseller: true` → Highlights the item with a gold border and "Bestseller" tag.
+- `spicyLevel: 0-3` → Shows a flame icon with the spice level.
 
-### Adding an Item
-```typescript
-{
-  categoryId: mainId,          // Link to the correct section ID
-  name: "Dish Name",
-  description: "Delicious description...",
-  price: 499,
-  imageUrl: "...",             // Link to your photo
-  isVegetarian: true,          // true = Veg, false = Non-Veg
-  isBestseller: true,          // Highlights with a gold border
-  spicyLevel: 2,               // 0-3 scale
-}
-```
-
-## 4. Resetting Data to See Changes
-Because the system "seeds" data once:
-1. Make your changes in `server/storage.ts`.
-2. Ask me to "Reset the database to reflect my new menu items and categories". I will then clear the existing tables so the new data can be loaded.
+## 3. Deployment
+This website is now a standalone Node.js application. You can host it on any platform that supports Node.js (like Replit, Heroku, Vercel, etc.) without needing any external database add-ons.
